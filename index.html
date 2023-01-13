@@ -1,0 +1,31 @@
+<!doctype html>
+<html amp>
+<head>
+  <meta charset="utf-8">
+  <script async src="https://cdn.ampproject.org/v0.js"></script>
+  <script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <title>Bitcoin Price on Binance</title>
+  <script>
+    function fetchData() {
+        fetch("https://api.binance.com/api/v3/ticker/price?symbol=BTCUSDT")
+          .then(response => response.json())
+          .then(data => {
+            const price = data.price;
+            const template = document.getElementById("btc-template").innerHTML;
+            const rendered = amp.render(template, {price});
+            document.getElementById("btc-price").innerHTML = rendered;
+          });
+    }
+    fetchData();
+    setInterval(fetchData, 15000);
+  </script>
+</head>
+<body>
+  <h1>Bitcoin Price on Binance</h1>
+  <div id="btc-price"></div>
+  <template id="btc-template" type="amp-mustache">
+      <p>Bitcoin: {{price}}</p>
+  </template>
+</body>
+</html>
