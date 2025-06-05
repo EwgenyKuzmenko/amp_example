@@ -1,11 +1,170 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hello World</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoinWave Exchange</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: #0d1117;
+            color: #e6edf3;
+        }
+        header {
+            background: #161b22;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+        header .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #58a6ff;
+        }
+        nav a {
+            margin-left: 1.5rem;
+            color: #e6edf3;
+            text-decoration: none;
+        }
+        nav a:hover {
+            color: #58a6ff;
+        }
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 1rem;
+            background: radial-gradient(circle at top right, #1a1f2b, #0d1117 70%);
+        }
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+        }
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            background: #238636;
+            border-radius: 4px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        .btn:hover {
+            background: #2ea043;
+        }
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            padding: 4rem 1rem;
+            background: #0d1117;
+        }
+        .feature {
+            flex: 1 1 200px;
+            max-width: 250px;
+            text-align: center;
+            padding: 1rem;
+        }
+        .feature i {
+            font-size: 2.5rem;
+            color: #58a6ff;
+            margin-bottom: 1rem;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: #161b22;
+            font-size: 0.9rem;
+        }
+        @media (max-width: 600px) {
+            nav {
+                display: none;
+            }
+            .menu-btn {
+                display: block;
+                cursor: pointer;
+            }
+        }
+        @media (min-width: 601px) {
+            .menu-btn {
+                display: none;
+            }
+        }
+    </style>
 </head>
 <body>
-  Hello World
+    <header>
+        <div class="logo">CoinWave</div>
+        <i class="fas fa-bars menu-btn" onclick="toggleMenu()"></i>
+        <nav id="nav">
+            <a href="#features">Features</a>
+            <a href="#signup">Sign Up</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Trade Crypto with Confidence</h1>
+        <p>Join CoinWave and experience a secure, lightning-fast platform for all your cryptocurrency trading needs.</p>
+        <a href="#signup" class="btn">Get Started</a>
+    </section>
+
+    <section class="features" id="features">
+        <div class="feature">
+            <i class="fas fa-shield-alt"></i>
+            <h3>Secure &amp; Trusted</h3>
+            <p>Multi-layer security architecture keeps your assets safe.</p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-bolt"></i>
+            <h3>Lightning Fast</h3>
+            <p>Execute trades in milliseconds on our robust engine.</p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-dollar-sign"></i>
+            <h3>Low Fees</h3>
+            <p>Trade more with some of the lowest fees in the industry.</p>
+        </div>
+        <div class="feature">
+            <i class="fas fa-headset"></i>
+            <h3>24/7 Support</h3>
+            <p>Reach our dedicated team whenever you need help.</p>
+        </div>
+    </section>
+
+    <section class="hero" id="signup" style="background:#161b22;">
+        <h2>Create Your Account</h2>
+        <p>Ready to dive in? Start trading with CoinWave in minutes.</p>
+        <a href="#" class="btn">Join Now</a>
+    </section>
+
+    <footer id="contact">
+        <p>&copy; 2025 CoinWave Exchange. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            var nav = document.getElementById('nav');
+            if (nav.style.display === 'block') {
+                nav.style.display = 'none';
+            } else {
+                nav.style.display = 'block';
+            }
+        }
+    </script>
 </body>
 </html>
