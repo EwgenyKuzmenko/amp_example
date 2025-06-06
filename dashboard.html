@@ -19,6 +19,9 @@
             justify-content: space-between;
             align-items: center;
         }
+        .menu button {
+            margin-right: 0.5rem;
+        }
         .logo {
             font-weight: 600;
             color: #58a6ff;
@@ -40,14 +43,73 @@
 <body>
     <header>
         <div class="logo">User Cabinet</div>
-        <button onclick="doLogout()">Logout</button>
+        <div class="menu">
+            <button onclick="showSection('settings')">Settings</button>
+            <button onclick="showSection('pairings')">Pairs</button>
+            <button onclick="doLogout()">Logout</button>
+        </div>
     </header>
     <main>
         <h2 id="welcome"></h2>
-        <p>This is your dashboard. You can customize this area with your own content.</p>
+        <section id="settings-section">
+            <h3>Settings</h3>
+            <label for="pairSelect">Trading Pair:</label>
+            <select id="pairSelect">
+                <option value="BTCUSDT">BTC</option>
+                <option value="ETHUSDT">ETH</option>
+                <option value="BNBUSDT">BNB</option>
+                <option value="XRPUSDT">XRP</option>
+                <option value="ADAUSDT">ADA</option>
+                <option value="SOLUSDT">SOL</option>
+                <option value="DOGEUSDT">DOGE</option>
+                <option value="AVAXUSDT">AVAX</option>
+                <option value="DOTUSDT">DOT</option>
+                <option value="SHIBUSDT">SHIB</option>
+            </select>
+            <button onclick="savePair()">Save</button>
+        </section>
+        <section id="pairings-section" style="display:none;">
+            <h3>Pair Prices</h3>
+            <p>Pair: <span id="currentPair"></span></p>
+            <div>
+                <div>Binance: <span id="binancePrice"></span></div>
+                <div>Bybit: <span id="bybitPrice"></span></div>
+            </div>
+        </section>
     </main>
     <script src="script.js"></script>
     <script>
+        function showSection(name) {
+            document.getElementById('settings-section').style.display = name === 'settings' ? 'block' : 'none';
+            document.getElementById('pairings-section').style.display = name === 'pairings' ? 'block' : 'none';
+        }
+
+        function savePair() {
+            var pair = document.getElementById('pairSelect').value;
+            setSelectedPair(pair);
+            updatePrices();
+        }
+
+        async function updatePrices() {
+            var pair = getSelectedPair();
+            document.getElementById('pairSelect').value = pair;
+            document.getElementById('currentPair').textContent = pair;
+            try {
+                var bin = await fetchBinancePrice(pair);
+                var byb = await fetchBybitPrice(pair);
+                document.getElementById('binancePrice').textContent = bin;
+                document.getElementById('bybitPrice').textContent = byb;
+            } catch (e) {
+                document.getElementById('binancePrice').textContent = 'n/a';
+                document.getElementById('bybitPrice').textContent = 'n/a';
+            }
+        }
+
+        function startPriceUpdates() {
+            updatePrices();
+            setInterval(updatePrices, 10000);
+        }
+
         function init() {
             var user = getCurrentUser();
             if (!user) {
@@ -55,7 +117,10 @@
                 return;
             }
             document.getElementById('welcome').textContent = 'Welcome, ' + user + '!';
+            showSection('settings');
+            startPriceUpdates();
         }
+
         function doLogout() {
             logout();
             window.location.href = 'login.html';
