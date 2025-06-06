@@ -66,6 +66,7 @@
                 <option value="DOTUSDT">DOT</option>
                 <option value="SHIBUSDT">SHIB</option>
             </select>
+
             <button onclick="savePair()">Save</button>
         </section>
         <section id="pairings-section" style="display:none;">
@@ -85,6 +86,7 @@
         }
 
         function savePair() {
+
             var pair = document.getElementById('pairSelect').value;
             setSelectedPair(pair);
             updatePrices();
@@ -92,6 +94,7 @@
 
         async function updatePrices() {
             var pair = getSelectedPair();
+
             document.getElementById('pairSelect').value = pair;
             document.getElementById('currentPair').textContent = pair;
             try {

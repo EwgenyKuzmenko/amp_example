@@ -44,6 +44,7 @@ function getSelectedPair() {
 
 // ---- Price fetching helpers ----
 async function fetchBinancePrice(pair) {
+
   const url = `https://corsproxy.io/https://api.binance.com/api/v3/ticker/price?symbol=${pair}`;
   const res = await fetch(url);
   const data = await res.json();
@@ -51,6 +52,7 @@ async function fetchBinancePrice(pair) {
 }
 
 async function fetchBybitPrice(pair) {
+
   const url = `https://corsproxy.io/https://api.bybit.com/v5/market/tickers?category=spot&symbol=${pair}`;
   const res = await fetch(url);
   const data = await res.json();
