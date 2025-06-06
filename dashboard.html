@@ -53,7 +53,20 @@
         <h2 id="welcome"></h2>
         <section id="settings-section">
             <h3>Settings</h3>
-            <label>Trading Pair: <input id="pairInput" type="text" placeholder="BTCUSDT"></label>
+            <label for="pairSelect">Trading Pair:</label>
+            <select id="pairSelect">
+                <option value="BTCUSDT">BTC</option>
+                <option value="ETHUSDT">ETH</option>
+                <option value="BNBUSDT">BNB</option>
+                <option value="XRPUSDT">XRP</option>
+                <option value="ADAUSDT">ADA</option>
+                <option value="SOLUSDT">SOL</option>
+                <option value="DOGEUSDT">DOGE</option>
+                <option value="AVAXUSDT">AVAX</option>
+                <option value="DOTUSDT">DOT</option>
+                <option value="SHIBUSDT">SHIB</option>
+            </select>
+
             <button onclick="savePair()">Save</button>
         </section>
         <section id="pairings-section" style="display:none;">
@@ -73,16 +86,16 @@
         }
 
         function savePair() {
-            var pair = document.getElementById('pairInput').value.toUpperCase().trim();
-            if (pair) {
-                setSelectedPair(pair);
-                updatePrices();
-            }
+
+            var pair = document.getElementById('pairSelect').value;
+            setSelectedPair(pair);
+            updatePrices();
         }
 
         async function updatePrices() {
             var pair = getSelectedPair();
-            document.getElementById('pairInput').value = pair;
+
+            document.getElementById('pairSelect').value = pair;
             document.getElementById('currentPair').textContent = pair;
             try {
                 var bin = await fetchBinancePrice(pair);
