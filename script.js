@@ -32,3 +32,28 @@ function getCurrentUser() {
 function logout() {
   localStorage.removeItem('currentUser');
 }
+
+// ---- Settings persistence ----
+function setSelectedPair(pair) {
+  localStorage.setItem('selectedPair', pair);
+}
+
+function getSelectedPair() {
+  return localStorage.getItem('selectedPair') || 'BTCUSDT';
+}
+
+// ---- Price fetching helpers ----
+async function fetchBinancePrice(pair) {
+  const res = await fetch(`https://api.binance.com/api/v3/ticker/price?symbol=${pair}`);
+  const data = await res.json();
+  return parseFloat(data.price);
+}
+
+async function fetchBybitPrice(pair) {
+  const res = await fetch(`https://api.bybit.com/v2/public/tickers?symbol=${pair}`);
+  const data = await res.json();
+  if (data.result && data.result.length > 0) {
+    return parseFloat(data.result[0].last_price);
+  }
+  throw new Error('Pair not found');
+}
