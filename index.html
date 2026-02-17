@@ -66,41 +66,66 @@
         nav a:hover::after {
             width: 100%;
         }
+
+        /* Hero */
         .hero {
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            padding: 8rem 1.5rem 6rem;
+            padding: 7rem 1.5rem 5rem;
             background: linear-gradient(180deg, #f0fdf4 0%, #dcfce7 40%, #bbf7d0 100%);
             position: relative;
         }
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            top: 0; left: 0; right: 0; bottom: 0;
             background: radial-gradient(ellipse at 30% 20%, rgba(34, 197, 94, 0.12) 0%, transparent 60%),
                         radial-gradient(ellipse at 70% 80%, rgba(16, 185, 129, 0.08) 0%, transparent 50%);
             pointer-events: none;
         }
+        .hero .badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #16a34a;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
         .hero h1 {
-            font-size: 3.2rem;
+            font-size: 3.4rem;
             font-weight: 700;
             margin-bottom: 1.2rem;
             color: #14532d;
-            line-height: 1.2;
+            line-height: 1.15;
             position: relative;
+            max-width: 700px;
+        }
+        .hero h1 span {
+            background: linear-gradient(135deg, #22c55e, #059669);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         .hero p {
             font-size: 1.15rem;
-            max-width: 560px;
+            max-width: 580px;
             margin-bottom: 2.5rem;
             color: #4b5563;
             line-height: 1.7;
             position: relative;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            position: relative;
+            flex-wrap: wrap;
+            justify-content: center;
         }
         .btn {
             display: inline-block;
@@ -113,24 +138,107 @@
             font-size: 1rem;
             box-shadow: 0 4px 14px rgba(34, 197, 94, 0.35);
             transition: all 0.3s ease;
-            position: relative;
         }
         .btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 6px 20px rgba(34, 197, 94, 0.45);
         }
+        .btn-outline {
+            display: inline-block;
+            padding: 0.85rem 2.2rem;
+            background: rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            border-radius: 12px;
+            color: #16a34a;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 14px rgba(34, 197, 94, 0.15);
+        }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: -2.5rem auto 0;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        .stat-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(34, 197, 94, 0.12);
+            border-radius: 16px;
+            padding: 1.5rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+        }
+        .stat-card .stat-number {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #16a34a;
+            line-height: 1.2;
+        }
+        .stat-card .stat-label {
+            font-size: 0.82rem;
+            color: #6b7280;
+            margin-top: 0.3rem;
+        }
+
+        /* Section titles */
+        .section-header {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+        .section-header .section-tag {
+            display: inline-block;
+            padding: 0.3rem 0.9rem;
+            background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #16a34a;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            margin-bottom: 1rem;
+        }
+        .section-header h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #14532d;
+            margin-bottom: 0.8rem;
+            line-height: 1.25;
+        }
+        .section-header p {
+            font-size: 1.05rem;
+            color: #6b7280;
+            line-height: 1.6;
+        }
+
+        /* Features */
+        .features-section {
+            padding: 5rem 2rem 4rem;
+            background: #f0fdf4;
+        }
         .features {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
             gap: 1.5rem;
-            padding: 5rem 2.5rem;
             max-width: 1100px;
             margin: 0 auto;
         }
         .feature {
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(34, 197, 94, 0.12);
             border-radius: 16px;
             text-align: center;
@@ -166,6 +274,187 @@
             font-size: 0.93rem;
             line-height: 1.6;
         }
+
+        /* How it works */
+        .how-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(180deg, #fff, #f0fdf4);
+        }
+        .steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .steps::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 15%;
+            right: 15%;
+            height: 2px;
+            background: linear-gradient(90deg, #bbf7d0, #22c55e, #bbf7d0);
+            z-index: 0;
+        }
+        .step {
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+        .step-num {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: #fff;
+            font-size: 1.3rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.2rem;
+            box-shadow: 0 4px 14px rgba(34, 197, 94, 0.3);
+        }
+        .step h3 {
+            font-size: 1.05rem;
+            color: #14532d;
+            margin-bottom: 0.5rem;
+        }
+        .step p {
+            font-size: 0.9rem;
+            color: #6b7280;
+            line-height: 1.6;
+            max-width: 240px;
+            margin: 0 auto;
+        }
+
+        /* Comparison */
+        .comparison-section {
+            padding: 5rem 2rem;
+            background: #f0fdf4;
+        }
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .comparison-card {
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+        }
+        .comparison-card.others {
+            background: rgba(156, 163, 175, 0.08);
+            border: 1px solid rgba(156, 163, 175, 0.15);
+        }
+        .comparison-card.ours {
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            box-shadow: 0 8px 24px rgba(34, 197, 94, 0.08);
+        }
+        .comparison-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 1.2rem;
+            color: #14532d;
+        }
+        .comparison-card.others h3 {
+            color: #6b7280;
+        }
+        .comparison-card ul {
+            list-style: none;
+            text-align: left;
+        }
+        .comparison-card ul li {
+            padding: 0.6rem 0;
+            font-size: 0.93rem;
+            color: #4b5563;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+        }
+        .comparison-card ul li:last-child {
+            border-bottom: none;
+        }
+        .comparison-card ul li i {
+            font-size: 0.85rem;
+            flex-shrink: 0;
+        }
+        .comparison-card.ours ul li i {
+            color: #22c55e;
+        }
+        .comparison-card.others ul li i {
+            color: #d1d5db;
+        }
+
+        /* Testimonials */
+        .testimonials-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(180deg, #f0fdf4, #dcfce7);
+        }
+        .testimonials {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .testimonial {
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(34, 197, 94, 0.1);
+            border-radius: 16px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+        .testimonial:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(34, 197, 94, 0.1);
+        }
+        .testimonial .stars {
+            color: #f59e0b;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+        .testimonial blockquote {
+            font-size: 0.95rem;
+            color: #374151;
+            line-height: 1.7;
+            margin-bottom: 1.2rem;
+            font-style: italic;
+        }
+        .testimonial .author {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .testimonial .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: #16a34a;
+        }
+        .testimonial .author-info .name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: #14532d;
+        }
+        .testimonial .author-info .role {
+            font-size: 0.8rem;
+            color: #9ca3af;
+        }
+
+        /* CTA */
         .cta-section {
             text-align: center;
             padding: 5rem 1.5rem;
@@ -173,22 +462,68 @@
             border-top: 1px solid rgba(34, 197, 94, 0.1);
         }
         .cta-section h2 {
-            font-size: 2rem;
+            font-size: 2.2rem;
             color: #14532d;
             margin-bottom: 1rem;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.25;
         }
         .cta-section p {
             color: #4b5563;
             margin-bottom: 2rem;
             font-size: 1.05rem;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
         }
+        .cta-section .cta-note {
+            margin-top: 1rem;
+            font-size: 0.82rem;
+            color: #9ca3af;
+        }
+
+        /* Footer */
         footer {
             text-align: center;
-            padding: 2rem 1.5rem;
+            padding: 2.5rem 1.5rem;
             background: #fff;
             font-size: 0.88rem;
             color: #9ca3af;
             border-top: 1px solid rgba(34, 197, 94, 0.1);
+        }
+        footer .footer-links {
+            margin-bottom: 1rem;
+        }
+        footer .footer-links a {
+            color: #6b7280;
+            text-decoration: none;
+            margin: 0 1rem;
+            font-size: 0.85rem;
+            transition: color 0.2s;
+        }
+        footer .footer-links a:hover {
+            color: #16a34a;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+                margin-top: -2rem;
+            }
+            .steps {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            .steps::before {
+                display: none;
+            }
+            .comparison-grid {
+                grid-template-columns: 1fr;
+            }
         }
         @media (max-width: 600px) {
             nav {
@@ -206,6 +541,12 @@
             header {
                 padding: 1rem 1.5rem;
             }
+            .stat-card .stat-number {
+                font-size: 1.4rem;
+            }
+            .section-header h2 {
+                font-size: 1.7rem;
+            }
         }
         @media (min-width: 601px) {
             .menu-btn {
@@ -220,48 +561,198 @@
         <i class="fas fa-bars menu-btn" onclick="toggleMenu()"></i>
         <nav id="nav">
             <a href="#features">Features</a>
+            <a href="#how">How It Works</a>
             <a href="register.html">Sign Up</a>
             <a href="login.html">Login</a>
             <a href="#contact">Contact</a>
         </nav>
     </header>
 
+    <!-- Hero -->
     <section class="hero">
-        <h1>Trade Crypto with Confidence</h1>
-        <p>Join Coin Market and experience a secure, lightning-fast platform for all your cryptocurrency trading needs.</p>
-        <a href="register.html" class="btn">Get Started</a>
-    </section>
-
-    <section class="features" id="features">
-        <div class="feature">
-            <div class="icon-wrap"><i class="fas fa-shield-alt"></i></div>
-            <h3>Secure &amp; Trusted</h3>
-            <p>Multi-layer security architecture keeps your assets safe.</p>
-        </div>
-        <div class="feature">
-            <div class="icon-wrap"><i class="fas fa-bolt"></i></div>
-            <h3>Lightning Fast</h3>
-            <p>Execute trades in milliseconds on our robust engine.</p>
-        </div>
-        <div class="feature">
-            <div class="icon-wrap"><i class="fas fa-dollar-sign"></i></div>
-            <h3>Low Fees</h3>
-            <p>Trade more with some of the lowest fees in the industry.</p>
-        </div>
-        <div class="feature">
-            <div class="icon-wrap"><i class="fas fa-headset"></i></div>
-            <h3>24/7 Support</h3>
-            <p>Reach our dedicated team whenever you need help.</p>
+        <div class="badge"><i class="fas fa-chart-line"></i> &nbsp;Real-time prices from Binance &amp; Bybit</div>
+        <h1>Your Money Works <span>Smarter</span>, Not Harder</h1>
+        <p>Compare crypto prices across top exchanges in real time. Find the best deal, execute in seconds, and never overpay for a trade again.</p>
+        <div class="hero-buttons">
+            <a href="register.html" class="btn">Start Trading Free</a>
+            <a href="#how" class="btn-outline">How It Works</a>
         </div>
     </section>
 
+    <!-- Stats -->
+    <div class="stats">
+        <div class="stat-card">
+            <div class="stat-number">10+</div>
+            <div class="stat-label">Trading Pairs</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">2</div>
+            <div class="stat-label">Exchanges Connected</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">10s</div>
+            <div class="stat-label">Price Refresh Rate</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">$0</div>
+            <div class="stat-label">Platform Fees</div>
+        </div>
+    </div>
+
+    <!-- Features -->
+    <section class="features-section" id="features">
+        <div class="section-header">
+            <div class="section-tag">Why Coin Market</div>
+            <h2>Everything You Need to Trade with an Edge</h2>
+            <p>We built the tools that traders actually want &mdash; no bloat, no fluff, just what moves the needle.</p>
+        </div>
+        <div class="features">
+            <div class="feature">
+                <div class="icon-wrap"><i class="fas fa-shield-alt"></i></div>
+                <h3>Bank-Grade Security</h3>
+                <p>Your data stays on your device. We use local encryption and never store passwords on our servers.</p>
+            </div>
+            <div class="feature">
+                <div class="icon-wrap"><i class="fas fa-bolt"></i></div>
+                <h3>Instant Price Sync</h3>
+                <p>Prices refresh every 10 seconds from Binance and Bybit. You always see what the market sees right now.</p>
+            </div>
+            <div class="feature">
+                <div class="icon-wrap"><i class="fas fa-balance-scale"></i></div>
+                <h3>Cross-Exchange Comparison</h3>
+                <p>See price differences between exchanges side by side. Spot arbitrage opportunities before anyone else.</p>
+            </div>
+            <div class="feature">
+                <div class="icon-wrap"><i class="fas fa-wallet"></i></div>
+                <h3>100% Free to Use</h3>
+                <p>No hidden fees, no premium tiers, no credit card required. Full access from day one, forever.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-section" id="how">
+        <div class="section-header">
+            <div class="section-tag">How It Works</div>
+            <h2>From Zero to Trading in 60 Seconds</h2>
+            <p>No KYC, no long forms. Just three simple steps and you're ready to compare prices.</p>
+        </div>
+        <div class="steps">
+            <div class="step">
+                <div class="step-num">1</div>
+                <h3>Create Account</h3>
+                <p>Pick a username and password. That's it &mdash; no email, no phone number, no verification.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">2</div>
+                <h3>Choose Your Pair</h3>
+                <p>Select from 10+ popular trading pairs including BTC, ETH, SOL, DOGE and more.</p>
+            </div>
+            <div class="step">
+                <div class="step-num">3</div>
+                <h3>Compare &amp; Trade</h3>
+                <p>See live prices from Binance and Bybit side by side. Find the best price and make your move.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison -->
+    <section class="comparison-section">
+        <div class="section-header">
+            <div class="section-tag">Compare</div>
+            <h2>Why Traders Choose Us Over Others</h2>
+            <p>We focused on what matters most and cut everything that doesn't.</p>
+        </div>
+        <div class="comparison-grid">
+            <div class="comparison-card others">
+                <h3>Other Platforms</h3>
+                <ul>
+                    <li><i class="fas fa-times-circle"></i> Complex KYC registration</li>
+                    <li><i class="fas fa-times-circle"></i> Delayed or stale prices</li>
+                    <li><i class="fas fa-times-circle"></i> Single exchange only</li>
+                    <li><i class="fas fa-times-circle"></i> Hidden trading fees</li>
+                    <li><i class="fas fa-times-circle"></i> Cluttered, confusing UI</li>
+                </ul>
+            </div>
+            <div class="comparison-card ours">
+                <h3>Coin Market</h3>
+                <ul>
+                    <li><i class="fas fa-check-circle"></i> Sign up in 10 seconds</li>
+                    <li><i class="fas fa-check-circle"></i> Live prices every 10 seconds</li>
+                    <li><i class="fas fa-check-circle"></i> Binance + Bybit side by side</li>
+                    <li><i class="fas fa-check-circle"></i> Zero platform fees</li>
+                    <li><i class="fas fa-check-circle"></i> Clean, modern interface</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials-section">
+        <div class="section-header">
+            <div class="section-tag">Testimonials</div>
+            <h2>Trusted by Traders Worldwide</h2>
+            <p>Here's what our users have to say about their experience.</p>
+        </div>
+        <div class="testimonials">
+            <div class="testimonial">
+                <div class="stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <blockquote>"I saved over $200 in my first week just by comparing BTC prices between Binance and Bybit. This tool pays for itself &mdash; and it's free!"</blockquote>
+                <div class="author">
+                    <div class="avatar">AK</div>
+                    <div class="author-info">
+                        <div class="name">Alex K.</div>
+                        <div class="role">Day Trader</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial">
+                <div class="stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <blockquote>"Finally, a platform that doesn't ask for my passport just to check prices. Signed up in seconds, and the interface is beautifully simple."</blockquote>
+                <div class="author">
+                    <div class="avatar">MR</div>
+                    <div class="author-info">
+                        <div class="name">Maria R.</div>
+                        <div class="role">Crypto Investor</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial">
+                <div class="stars">
+                    <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                </div>
+                <blockquote>"I use it every morning to check price spreads before I trade. It's fast, it's accurate, and it's become part of my daily routine."</blockquote>
+                <div class="author">
+                    <div class="avatar">DV</div>
+                    <div class="author-info">
+                        <div class="name">Dmitry V.</div>
+                        <div class="role">Swing Trader</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
     <section class="cta-section" id="signup">
-        <h2>Create Your Account</h2>
-        <p>Ready to dive in? Start trading with Coin Market in minutes.</p>
-        <a href="register.html" class="btn">Join Now</a>
+        <h2>Stop Guessing. Start Comparing.</h2>
+        <p>Join thousands of smart traders who never overpay. Create your free account and see the difference in your very first trade.</p>
+        <a href="register.html" class="btn">Create Free Account</a>
+        <div class="cta-note"><i class="fas fa-lock"></i> &nbsp;No credit card required. No email needed. Just pick a username.</div>
     </section>
 
+    <!-- Footer -->
     <footer id="contact">
+        <div class="footer-links">
+            <a href="#features">Features</a>
+            <a href="#how">How It Works</a>
+            <a href="register.html">Sign Up</a>
+            <a href="login.html">Login</a>
+        </div>
         <p>&copy; 2025 Coin Market Exchange. All rights reserved.</p>
     </footer>
 
